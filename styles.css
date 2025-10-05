@@ -1,0 +1,116 @@
+body {
+  font-family: 'Alata', sans-serif;
+  background-color: #DFEAE9;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 500px; 
+}
+
+.logo {
+  height: 130px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+p.subtitle {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+#english-word {
+  font-size: 2.5rem; /* letra grande */
+  font-weight: bold;
+  color: #2c3e50; /* un azul oscuro elegante */
+  margin: 20px 0;
+  text-align: center;
+}
+
+select, input[type="text"] {
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.prompt {
+  font-size: 46px;
+  margin-bottom: 20px;
+}
+
+button {
+  margin-top: 20px;
+	padding: 10px 20px;
+  font-size: 16px;
+  background-color: #F1C40F;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.feedback {
+  margin-top: 20px;
+	font-weight: bold;
+	font-size: 18px;
+  color: green;
+	margin-bottom: 20px; 
+}
+
+.disclaimer {
+	margin-top: 20px;
+  text-align: left;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .prompt {
+    font-size: 1.2rem;
+  }
+
+  input, select, button {
+   
+		width: 100%;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .stats, .feedback, .disclaimer {
+ 
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+  }
+
+  .logo {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+}
