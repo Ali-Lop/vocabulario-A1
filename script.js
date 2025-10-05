@@ -88,10 +88,11 @@ const vocabulary = [
 { english: "museum", spanish: ["museo"] }
 ];
 
+
 let currentWord;
 let attempts;
-let score = 0;
-
+let correctCount = 0;
+let errorCount = 0;
 
 const englishWord = document.getElementById("english-word");
 const answerInput = document.getElementById("answer-input");
@@ -100,56 +101,69 @@ const showBtn = document.getElementById("show-btn");
 const nextBtn = document.getElementById("next-btn");
 const feedback = document.getElementById("feedback");
 const correctAnswer = document.getElementById("correct-answer");
-const scoreDisplay = document.getElementById("score");
+
+const correctCountDisplay = document.getElementById("correct-count");
+const errorCountDisplay = document.getElementById("error-count");
+const accuracyDisplay = document.getElementById("accuracy");
 
 function normalizeText(text) {
-return text
-.toLowerCase()
-.normalize("NFD")
-.replace(/[\u0300-\u036f]/g, "") // remove accents
-.replace(/ñ/g, "n")
-.trim();
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/ñ/g, "n")
+    .trim();
 }
 
 function newWord() {
-const randomIndex = Math.floor(Math.random() * vocabulary.length);
-currentWord = vocabulary[randomIndex];
-englishWord.textContent = currentWord.english;
-answerInput.value = "";
-feedback.textContent = "";
-correctAnswer.textContent = "";
-attempts = 3;
-showBtn.disabled = true;
-nextBtn.disabled = true;
-checkBtn.disabled = false;
+  const randomIndex = Math.floor(Math.random() * vocabulary.length);
+  currentWord = vocabulary[randomIndex];
+  englishWord.textContent = currentWord.english;
+  answerInput.value = "";
+  feedback.textContent = "";
+  correctAnswer.textContent = "";
+  attempts = 3;
+  showBtn.disabled = true;
+  nextBtn.disabled = true;
+  checkBtn.disabled = false;
+}
+
+function updateStats() {
+  const totalAttempts = correctCount + errorCount;
+  const accuracy = totalAttempts === 0 ? 0 : Math.round((correctCount / totalAttempts) * 100);
+  correctCountDisplay.textContent = correctCount;
+  errorCountDisplay.textContent = errorCount;
+  accuracyDisplay.textContent = `${accuracy}%`;
 }
 
 function checkAnswer() {
-const userAnswer = normalizeText(answerInput.value);
-const validAnswers = currentWord.spanish.map(normalizeText);
+  const userAnswer = normalizeText(answerInput.value);
+  const validAnswers = currentWord.spanish.map(normalizeText);
 
-if (validAnswers.includes(userAnswer)) {
-feedback.textContent = "✅ Correct!";
-score++;
-scoreDisplay.textContent = `Score: ${score}`;
-checkBtn.disabled = true;
-nextBtn.disabled = false;
-} else {
-attempts--;
-if (attempts > 0) {
-feedback.textContent = `❌ Try again. Attempts left: ${attempts}`;
-} else {
-feedback.textContent = "❌ No attempts left.";
-showBtn.disabled = false;
-checkBtn.disabled = true;
-}
-}
+  if (validAnswers.includes(userAnswer)) {
+    feedback.textContent = "✅ Correct!";
+    correctCount++;
+    updateStats();
+    checkBtn.disabled = true;
+    nextBtn.disabled = false;
+  } else {
+    attempts--;
+    if (attempts > 0) {
+      feedback.textContent = `❌ Try again. Attempts left: ${attempts}`;
+    } else {
+      feedback.textContent = "❌ No attempts left.";
+      showBtn.disabled = false;
+      checkBtn.disabled = true;
+      errorCount++;
+      updateStats();
+    }
+  }
 }
 
 function showAnswer() {
-correctAnswer.textContent = `The correct answer was: ${currentWord.spanish[0]}`;
-showBtn.disabled = true;
-nextBtn.disabled = false;
+  correctAnswer.textContent = `The correct answer was: ${currentWord.spanish[0]}`;
+  showBtn.disabled = true;
+  nextBtn.disabled = false;
 }
 
 checkBtn.addEventListener("click", checkAnswer);
@@ -158,5 +172,4 @@ nextBtn.addEventListener("click", newWord);
 
 // Initialize game
 newWord();
-scoreDisplay.textContent = "Score: 0";
-	
+updateStats();
