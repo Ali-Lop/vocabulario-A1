@@ -8,23 +8,23 @@
 </head>
 <body>
   <div class="game-container">
-		<img src="https://yohablotuhablas.com/wp-content/uploads/2025/04/logo-yo-hablo-tu-hablas.png" alt="Logo" class="logo" />
+    <img src="https://yohablotuhablas.com/wp-content/uploads/2025/04/logo-yo-hablo-tu-hablas.png" alt="Logo" class="logo" />
     <h1>Practice your vocabulary</h1>
+    
     <p class="subtitle">
-      Translate the following English word into Spanish.<br>
-      <div class="disclaimer">
-      🇪🇸 You can write with or without accents, with or without "ñ"<br />
-    </div>
+      Translate the following English word into Spanish.
     </p>
+    <div class="disclaimer">
+      🇪🇸 You can write with or without accents, with or without "ñ"
+    </div>
 
     <div id="word-container">
       <p id="english-word"></p>
       <input type="text" id="answer-input" placeholder="Write your answer in Spanish">
     </div>
 	
-	
-	  <button id="check">Check</button>
-    <button id="btnMostrar" disabled>Show answer</button>
+    <button id="check-btn">Check</button>
+    <button id="show-btn" disabled>Show answer</button>
     <button id="next-btn" disabled>Next word</button>
 
     <!-- Feedback -->
@@ -32,18 +32,13 @@
     <div class="correct-answer" id="correct-answer"></div>
 
     <!-- Stats -->
-    <div class="stats" id="stats">
-      ✅ Correct answers: <span id="correct-count">0</span> |
-      ❌ Errors: <span id="error-count">0</span> |
-      🔢 Accuracy: <span id="accuracy">0%</span>
-    </div>
+    <div class="stats" id="score">Score: 0</div>
   </div>
-	
-	
-	
-	<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
