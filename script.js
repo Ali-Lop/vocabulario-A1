@@ -92,6 +92,7 @@ let currentWord;
 let attempts;
 let score = 0;
 
+
 const englishWord = document.getElementById("english-word");
 const answerInput = document.getElementById("answer-input");
 const checkBtn = document.getElementById("check-btn");
@@ -111,8 +112,8 @@ return text
 }
 
 function newWord() {
-const randomIndex = Math.floor(Math.random() * words.length);
-currentWord = words[randomIndex];
+const randomIndex = Math.floor(Math.random() * vocabulary.length);
+currentWord = vocabulary[randomIndex];
 englishWord.textContent = currentWord.english;
 answerInput.value = "";
 feedback.textContent = "";
@@ -158,3 +159,4 @@ nextBtn.addEventListener("click", newWord);
 // Initialize game
 newWord();
 scoreDisplay.textContent = "Score: 0";
+	
