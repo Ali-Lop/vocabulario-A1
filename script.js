@@ -55,6 +55,7 @@ const vocabulary = [
    { english: "sandwich", spanish: ["bocadillo"] },
   { english: "cheese", spanish: ["queso"] },
    { english: "red wine", spanish: ["vino tinto"] },
+   { english: "crab", spanish: ["cangrejo"] },
 
 { english: "eat", spanish: ["comer"] },
 { english: "drink", spanish: ["beber"] },
@@ -67,6 +68,9 @@ const vocabulary = [
 { english: "listen", spanish: ["escuchar"] },
 { english: "look", spanish: ["mirar"] },
   { english: "can", spanish: ["poder"] },
+    { english: "travel", spanish: ["viajar"] },
+      { english: "clean", spanish: ["limpiar"] },
+      { english: "paint", spanish: ["pintar"] },
 
 { english: "and", spanish: ["y"] },
 { english: "but", spanish: ["pero"] },
